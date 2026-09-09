@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ask Julie</title>
 <meta name="description" content="A free, growing register of straight answers about homeschooling in California.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -13,7 +14,7 @@
   --paper:#EFF2EC; --surface:#FAFBF8; --surface-2:#E7EBE3;
   --ink:#1B211C; --ink-2:#4C5A4E; --ink-3:#7A8578;
   --rule:#CFD7CB; --rule-strong:#AEBAAA;
-  --accent:#9E2A2B; --accent-soft:#F4E4E2; --accent-ink:#9E2A2B;
+  --accent:#990000; --accent-soft:#F2E2E0; --accent-ink:#990000;
   --green:#2F5D45; --green-soft:#E0EBE3;
   --shadow:0 1px 2px rgba(27,33,28,.06), 0 8px 24px -16px rgba(27,33,28,.28);
   --display:"Zilla Slab",Georgia,"Times New Roman",serif;
@@ -28,7 +29,7 @@
     --paper:#131714; --surface:#1B211B; --surface-2:#232A23;
     --ink:#E7ECE4; --ink-2:#A3AFA2; --ink-3:#8A968A;
     --rule:#2F382E; --rule-strong:#454F44;
-    --accent:#E2685C; --accent-soft:#38201E; --accent-ink:#EF8375;
+    --accent:#E4695C; --accent-soft:#38201E; --accent-ink:#F08477;
     --green:#74C69D; --green-soft:#1E2E26;
     --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.9);
   }
@@ -37,7 +38,7 @@
   --paper:#131714; --surface:#1B211B; --surface-2:#232A23;
   --ink:#E7ECE4; --ink-2:#A3AFA2; --ink-3:#8A968A;
   --rule:#2F382E; --rule-strong:#454F44;
-  --accent:#E2685C; --accent-soft:#38201E; --accent-ink:#EF8375;
+  --accent:#E4695C; --accent-soft:#38201E; --accent-ink:#F08477;
   --green:#74C69D; --green-soft:#1E2E26;
   --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.9);
 }
@@ -79,8 +80,11 @@ img{max-width:100%}
 /* ---------- header ---------- */
 .masthead{border-bottom:1px solid var(--rule); background:var(--paper); position:sticky; top:0; z-index:20}
 .masthead .shell{display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding-block:.9rem}
-.wordmark{font-family:var(--display); font-size:1.3rem; font-weight:700; letter-spacing:-.015em; text-decoration:none; display:flex; align-items:baseline; gap:.45rem}
-.wordmark .dot{width:.4rem; height:.4rem; background:var(--accent); border-radius:50%; display:inline-block; transform:translateY(-.1rem)}
+.wordmark{display:block; color:var(--ink); line-height:0}
+.wordmark svg{height:30px; width:auto; display:block}
+.wordmark .jt{fill:currentColor}
+.wordmark .jr{fill:var(--accent)}
+@media (max-width:420px){ .wordmark svg{height:24px} }
 .masthead nav{display:flex; gap:1.4rem; align-items:center}
 .masthead nav a{font-size:var(--s--1); text-decoration:none; color:var(--ink-2); font-weight:500}
 .masthead nav a:hover{color:var(--accent)}
@@ -257,7 +261,7 @@ footer .disclaim{max-width:44ch; line-height:1.6}
 
 <header class="masthead">
   <div class="shell">
-    <a class="wordmark" href="#top">Ask Julie<span class="dot" aria-hidden="true"></span></a>
+    <a class="wordmark" href="#top" aria-label="Ask Julie — home"><svg viewBox="0 0 168 69" role="img" aria-label="Ask Julie"><g transform="translate(0 69) scale(1 -1)"><path d="M20.99 25.94L18.18 34.08C17.59 35.93 17.17 37.61 16.75 39.25L16.63 39.25C16.25 37.61 15.78 35.85 15.24 34.13L12.47 25.94ZM11.71 23.08L8.77 14.18L4.99 14.18L14.61 42.48L19.02 42.48L28.68 14.18L24.77 14.18L21.75 23.08Z" class="jt"/><path d="M31.96 17.91C33.09 17.24 35.03 16.49 36.88 16.49C39.52 16.49 40.78 17.79 40.78 19.51C40.78 21.27 39.73 22.24 37.04 23.25C33.35 24.59 31.63 26.57 31.63 29C31.63 32.28 34.31 34.97 38.64 34.97C40.7 34.97 42.5 34.42 43.59 33.71L42.71 31.06C41.92 31.52 40.44 32.24 38.55 32.24C36.37 32.24 35.19 30.98 35.19 29.47C35.19 27.74 36.37 26.99 39.02 25.98C42.5 24.68 44.35 22.91 44.35 19.85C44.35 16.23 41.54 13.72 36.79 13.72C34.56 13.72 32.51 14.3 31.08 15.14Z" class="jt"/><path d="M52.79 25.18L52.88 25.18C53.38 25.9 54.05 26.82 54.64 27.49L60.65 34.5L65.06 34.5L57.2 26.15L66.15 14.18L61.65 14.18L54.68 23.96L52.79 21.82L52.79 14.18L49.1 14.18L49.1 44L52.79 44Z" class="jt"/><path d="M83.6 64.53C86.59 64.53 88.49 62.3 88.49 59.4C88.49 56.33 86.59 54.17 83.6 54.17C80.78 54.17 78.71 56.33 78.71 59.4C78.71 62.3 80.7 64.53 83.52 64.53ZM87 47.79L86.83 45.64C86.59 41.41 87.91 37.76 91.56 33.45C95.54 28.81 98.69 24.66 98.69 19.11C98.69 12.81 94.38 6.84 84.84 6.84C80.45 6.84 75.81 8.17 72.99 10.24L74.98 15.46C77.05 13.8 80.37 12.89 83.35 12.89C88.58 12.89 91.23 15.79 91.23 20.02C91.23 23.67 89.15 26.9 85.43 31.29C81.28 36.27 79.79 41.16 80.29 45.64L80.45 47.79Z" class="jr"/><path d="M120.69 20.22C120.69 18.12 120.74 16.27 120.86 14.68L117.59 14.68L117.38 17.99L117.29 17.99C116.37 16.36 114.18 14.22 110.57 14.22C107.38 14.22 103.56 16.02 103.56 23.12L103.56 35L107.25 35L107.25 23.79C107.25 19.93 108.47 17.28 111.79 17.28C114.27 17.28 115.99 19 116.66 20.68C116.87 21.19 117 21.86 117 22.57L117 35L120.69 35Z" class="jt"/><path d="M126.83 44.5L130.52 44.5L130.52 14.68L126.83 14.68Z" class="jt"/><path d="M136.65 35L140.35 35L140.35 14.67L136.65 14.67ZM136.65 14.68M138.42 38.74C137.03 38.74 136.11 39.83 136.11 41.14C136.11 42.44 137.07 43.49 138.5 43.49C139.93 43.49 140.85 42.44 140.85 41.14C140.85 39.83 139.93 38.74 138.46 38.74Z" class="jt"/><path d="M159.38 26.86C159.42 29.17 158.41 32.86 154.29 32.86C150.51 32.86 148.92 29.42 148.62 26.86ZM148.58 24.21C148.67 19.21 151.81 17.15 155.51 17.15C158.16 17.15 159.8 17.62 161.14 18.16L161.81 15.56C160.51 14.97 158.24 14.26 155.01 14.26C148.79 14.26 145.01 18.41 145.01 24.5C145.01 30.68 148.67 35.51 154.59 35.51C161.22 35.51 162.95 29.67 162.95 25.93C162.95 25.18 162.9 24.59 162.82 24.17Z" class="jt"/></g></svg></a>
     <nav>
       <a href="#register">Questions</a>
       <a href="#about">About</a>
