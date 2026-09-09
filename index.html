@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ask Julie</title>
-<meta name="description" content="A free, growing register of straight answers about homeschooling in California.">
+<meta name="description" content="A tested library of AI prompts for homeschooling parents — free to copy, with a public board of questions the community votes on.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,12 +16,11 @@
   --rule:#CFD7CB; --rule-strong:#AEBAAA;
   --accent:#990000; --accent-soft:#F2E2E0; --accent-ink:#990000;
   --green:#2F5D45; --green-soft:#E0EBE3;
-  --shadow:0 1px 2px rgba(27,33,28,.06), 0 8px 24px -16px rgba(27,33,28,.28);
   --display:"Zilla Slab",Georgia,"Times New Roman",serif;
   --body:"Public Sans",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --s--1:.8125rem; --s-0:1rem; --s-1:1.125rem; --s-2:1.375rem;
-  --s-3:1.875rem; --s-4:2.5rem; --s-5:clamp(2.5rem,5.5vw,3.75rem);
+  --s-3:1.875rem; --s-5:clamp(2.5rem,5.5vw,3.75rem);
   --shell:1080px; --measure:64ch;
 }
 @media (prefers-color-scheme:dark){
@@ -31,7 +30,6 @@
     --rule:#2F382E; --rule-strong:#454F44;
     --accent:#E4695C; --accent-soft:#38201E; --accent-ink:#F08477;
     --green:#74C69D; --green-soft:#1E2E26;
-    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.9);
   }
 }
 :root[data-theme="dark"]{
@@ -40,44 +38,31 @@
   --rule:#2F382E; --rule-strong:#454F44;
   --accent:#E4695C; --accent-soft:#38201E; --accent-ink:#F08477;
   --green:#74C69D; --green-soft:#1E2E26;
-  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -16px rgba(0,0,0,.9);
 }
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{
-  margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--body); font-size:var(--s-0); line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body);
+  font-size:var(--s-0); line-height:1.65; -webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:var(--display); font-weight:600; line-height:1.15; text-wrap:balance; margin:0}
 p{margin:0}
 a{color:var(--ink); text-decoration-color:var(--rule-strong); text-underline-offset:3px}
 a:hover{text-decoration-color:var(--accent)}
 :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
-img{max-width:100%}
 
 .shell{max-width:var(--shell); margin-inline:auto; padding-inline:clamp(1.1rem,4vw,2.5rem)}
-.eyebrow{
-  font-family:var(--mono); font-size:.6875rem; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--ink-3); font-weight:500;
-}
-.mono{font-family:var(--mono); font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono); font-size:.6875rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500}
 
-/* ---------- draft banner (delete this block + <div class="draft"> before launch) ---------- */
-.draft{
-  background:var(--accent); color:#FFF6F5; font-family:var(--mono);
-  font-size:.75rem; letter-spacing:.02em; line-height:1.5;
-}
+/* draft banner — delete before launch */
+.draft{background:var(--accent); color:#FFF6F5; font-family:var(--mono); font-size:.75rem; line-height:1.5}
 .draft .shell{display:flex; gap:1rem; align-items:baseline; justify-content:space-between; padding-block:.6rem}
 .draft b{font-weight:600}
-.draft button{
-  font:inherit; color:inherit; background:none; border:1px solid rgba(255,255,255,.45);
-  border-radius:2px; padding:.1rem .5rem; cursor:pointer; flex:none;
-}
+.draft button{font:inherit; color:inherit; background:none; border:1px solid rgba(255,255,255,.45);
+  border-radius:2px; padding:.1rem .5rem; cursor:pointer; flex:none}
 .draft button:hover{background:rgba(255,255,255,.15)}
 
-/* ---------- header ---------- */
+/* header */
 .masthead{border-bottom:1px solid var(--rule); background:var(--paper); position:sticky; top:0; z-index:20}
 .masthead .shell{display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding-block:.9rem}
 .wordmark{display:block; color:var(--ink); line-height:0}
@@ -88,173 +73,167 @@ img{max-width:100%}
 .masthead nav{display:flex; gap:1.4rem; align-items:center}
 .masthead nav a{font-size:var(--s--1); text-decoration:none; color:var(--ink-2); font-weight:500}
 .masthead nav a:hover{color:var(--accent)}
-@media (max-width:620px){ .masthead nav a.hide-sm{display:none} }
 
-/* ---------- ruled column ---------- */
 .ruled{position:relative}
 @media (min-width:900px){
-  .ruled::before{
-    content:""; position:absolute; left:calc((100% - var(--shell))/2 + clamp(1.1rem,4vw,2.5rem) - 1.4rem);
-    top:0; bottom:0; width:1px; background:var(--accent); opacity:.6;
-  }
+  .ruled::before{content:""; position:absolute;
+    left:calc((100% - var(--shell))/2 + clamp(1.1rem,4vw,2.5rem) - 1.4rem);
+    top:0; bottom:0; width:1px; background:var(--accent); opacity:.6}
 }
 
-/* ---------- hero ---------- */
-.hero{padding-block:clamp(3rem,7vw,5.5rem) clamp(2rem,4vw,3rem)}
-.hero h1{font-size:var(--s-5); letter-spacing:-.02em; max-width:16ch; margin-bottom:1.1rem}
+/* hero */
+.hero{padding-block:clamp(3rem,7vw,5rem) clamp(2rem,4vw,3rem)}
+.hero h1{font-size:var(--s-5); letter-spacing:-.02em; max-width:17ch; margin-bottom:1.1rem}
 .hero h1 em{font-style:normal; color:var(--accent)}
-.hero .lede{font-size:var(--s-2); color:var(--ink-2); max-width:46ch; line-height:1.45}
+.hero .lede{font-size:var(--s-2); color:var(--ink-2); max-width:48ch; line-height:1.45}
 
-.askbar{display:flex; gap:.5rem; margin-top:2rem; max-width:34rem; flex-wrap:wrap}
-.askbar input{
-  flex:1 1 16rem; min-width:0; font:inherit; color:var(--ink);
-  background:var(--surface); border:1px solid var(--rule-strong); border-radius:2px;
-  padding:.7rem .85rem;
-}
-.askbar input::placeholder{color:var(--ink-3)}
-.askbar input:focus{border-color:var(--accent)}
-
-.btn{
-  font-family:var(--body); font-size:var(--s--1); font-weight:600; letter-spacing:.01em;
-  background:var(--ink); color:var(--paper); border:1px solid var(--ink);
-  border-radius:2px; padding:.7rem 1.15rem; cursor:pointer; white-space:nowrap;
-  text-decoration:none; display:inline-flex; align-items:center; gap:.4rem;
-}
+.btn{font-family:var(--body); font-size:var(--s--1); font-weight:600;
+  background:var(--ink); color:var(--paper); border:1px solid var(--ink); border-radius:2px;
+  padding:.6rem 1.05rem; cursor:pointer; white-space:nowrap; text-decoration:none;
+  display:inline-flex; align-items:center; gap:.4rem}
 .btn:hover{background:var(--accent); border-color:var(--accent); color:#FFF6F5}
 .btn.ghost{background:transparent; color:var(--ink); border-color:var(--rule-strong)}
 .btn.ghost:hover{border-color:var(--accent); color:var(--accent); background:transparent}
+.btn.sm{font-size:.75rem; padding:.4rem .7rem}
+.btn:disabled{opacity:.45; cursor:not-allowed}
 
-/* standing facts strip */
-.facts{
-  margin-top:2.75rem; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
-  display:grid; grid-template-columns:repeat(3,1fr);
-}
+.facts{margin-top:2.5rem; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  display:grid; grid-template-columns:repeat(3,1fr)}
 .facts div{padding:1rem 1.25rem 1rem 0; border-right:1px solid var(--rule)}
 .facts div:last-child{border-right:0}
 .facts dt{display:block; margin-bottom:.3rem}
-.facts dd{margin:0; font-family:var(--mono); font-size:var(--s-1); font-weight:500; font-variant-numeric:tabular-nums; line-height:1.3}
-.facts .flag{color:var(--accent)}
+.facts dd{margin:0; font-family:var(--mono); font-size:var(--s-1); font-weight:500;
+  font-variant-numeric:tabular-nums; line-height:1.3}
 @media (max-width:720px){
   .facts{grid-template-columns:1fr}
   .facts div{border-right:0; border-bottom:1px solid var(--rule); padding-right:0}
   .facts div:last-child{border-bottom:0}
 }
 
-/* ---------- generic section ---------- */
-section{padding-block:clamp(2.75rem,6vw,4.5rem)}
-.sec-head{display:flex; align-items:baseline; gap:.9rem; margin-bottom:1.6rem; flex-wrap:wrap}
+section{padding-block:clamp(2.5rem,5vw,4rem)}
+.sec-head{display:flex; align-items:baseline; gap:.9rem; margin-bottom:1.4rem; flex-wrap:wrap}
 .sec-head h2{font-size:var(--s-3); letter-spacing:-.015em}
-.sec-head .eyebrow{flex:none}
 .prose{max-width:var(--measure); color:var(--ink-2); display:flex; flex-direction:column; gap:1rem}
 .prose strong{color:var(--ink); font-weight:600}
-p.prose{display:block}  /* .prose on a <p> must stay block, or inline children become flex items */
+p.prose{display:block}
 
-/* ---------- about ---------- */
-.about{border-top:1px solid var(--rule)}
-.about-grid{display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:clamp(1.5rem,4vw,3.5rem); align-items:start}
-@media (max-width:820px){ .about-grid{grid-template-columns:1fr} }
-.creds{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; border-top:1px solid var(--rule)}
-.creds li{display:flex; gap:.9rem; padding:.7rem 0; border-bottom:1px solid var(--rule); font-size:var(--s--1); color:var(--ink-2)}
-.creds b{font-family:var(--mono); font-size:.75rem; color:var(--ink-3); font-weight:500; flex:none; width:3.2rem; font-variant-numeric:tabular-nums}
-
-/* ---------- register ---------- */
-.register{border-top:1px solid var(--rule)}
-.controls{display:flex; gap:1rem; flex-wrap:wrap; align-items:center; margin-bottom:1.5rem}
-.search{position:relative; flex:1 1 15rem; max-width:22rem}
-.search input{
-  width:100%; font:inherit; font-size:var(--s--1); color:var(--ink); background:var(--surface);
-  border:1px solid var(--rule-strong); border-radius:2px; padding:.55rem .75rem;
-}
+/* controls */
+.controls{display:flex; gap:1rem; flex-wrap:wrap; align-items:center; margin-bottom:1.4rem}
+.search{flex:1 1 15rem; max-width:22rem}
+.search input{width:100%; font:inherit; font-size:var(--s--1); color:var(--ink);
+  background:var(--surface); border:1px solid var(--rule-strong); border-radius:2px; padding:.55rem .75rem}
 .search input:focus{border-color:var(--accent)}
 .chips{display:flex; gap:.4rem; flex-wrap:wrap}
-.chip{
-  font-family:var(--mono); font-size:.6875rem; letter-spacing:.06em; text-transform:uppercase;
+.chip{font-family:var(--mono); font-size:.6875rem; letter-spacing:.06em; text-transform:uppercase;
   background:transparent; color:var(--ink-2); border:1px solid var(--rule-strong);
-  border-radius:2px; padding:.35rem .6rem; cursor:pointer; font-weight:500;
-}
+  border-radius:2px; padding:.35rem .6rem; cursor:pointer; font-weight:500}
 .chip:hover{border-color:var(--accent); color:var(--accent)}
 .chip[aria-pressed="true"]{background:var(--ink); border-color:var(--ink); color:var(--paper)}
 
+/* prompt library */
+.lib{border-top:1px solid var(--rule)}
 .entries{border-top:1px solid var(--rule-strong)}
 .entry{border-bottom:1px solid var(--rule)}
 .entry[hidden]{display:none}
-.entry > summary{
-  list-style:none; cursor:pointer; display:grid;
-  grid-template-columns:4.5rem minmax(0,1fr) auto; gap:1rem; align-items:baseline;
-  padding:1rem 0;
-}
+.entry > summary{list-style:none; cursor:pointer; display:grid;
+  grid-template-columns:4.5rem minmax(0,1fr) auto; gap:1rem; align-items:baseline; padding:1rem 0}
 .entry > summary::-webkit-details-marker{display:none}
 .entry > summary:hover .q{color:var(--accent)}
-.entry .num{font-family:var(--mono); font-size:.75rem; color:var(--ink-3); font-variant-numeric:tabular-nums; letter-spacing:.02em}
-.entry .q{font-family:var(--display); font-size:var(--s-1); font-weight:500; line-height:1.35; color:var(--ink)}
-.entry .topic{font-family:var(--mono); font-size:.625rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap}
 .entry[open] > summary .q{color:var(--accent)}
-.answer{padding:0 0 1.6rem 5.5rem; max-width:calc(var(--measure) + 5.5rem); display:flex; flex-direction:column; gap:.9rem; color:var(--ink-2)}
-.answer strong{color:var(--ink); font-weight:600}
-.answer ul{margin:0; padding-left:1.1rem; display:flex; flex-direction:column; gap:.45rem}
-.answer .note{
-  font-size:var(--s--1); border-left:2px solid var(--accent); padding-left:.9rem; color:var(--ink-2);
-}
+.entry .num{font-family:var(--mono); font-size:.75rem; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.entry .q{font-family:var(--display); font-size:var(--s-1); font-weight:500; line-height:1.35; color:var(--ink)}
+.entry .cat{font-family:var(--mono); font-size:.625rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); white-space:nowrap}
+.body{padding:0 0 1.6rem 5.5rem; display:flex; flex-direction:column; gap:1rem;
+  color:var(--ink-2); max-width:calc(var(--measure) + 5.5rem)}
 @media (max-width:680px){
   .entry > summary{grid-template-columns:3.2rem minmax(0,1fr); gap:.75rem}
-  .entry .topic{grid-column:2; font-size:.5625rem}
-  .answer{padding-left:0}
+  .entry .cat{grid-column:2; font-size:.5625rem}
+  .body{padding-left:0}
 }
-.tbl-wrap{overflow-x:auto; border:1px solid var(--rule); border-radius:2px}
-table.cost{border-collapse:collapse; width:100%; font-size:var(--s--1); min-width:24rem}
-table.cost th, table.cost td{padding:.5rem .8rem; border-bottom:1px solid var(--rule); text-align:left}
-table.cost th{font-family:var(--mono); font-size:.6875rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); font-weight:500; background:var(--surface-2)}
-table.cost td:last-child, table.cost th:last-child{text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums}
-table.cost tr:last-child td{border-bottom:0; font-weight:600; color:var(--ink)}
-.empty{padding:2.5rem 0; color:var(--ink-3); font-size:var(--s--1)}
+.meta{display:flex; gap:.4rem; flex-wrap:wrap}
+.pill{font-family:var(--mono); font-size:.625rem; letter-spacing:.08em; text-transform:uppercase;
+  border:1px solid var(--rule); border-radius:2px; padding:.15rem .45rem; color:var(--ink-3)}
 
-/* ---------- ask form ---------- */
-.form{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; max-width:38rem; margin-top:1.8rem}
+.promptbox{position:relative; border:1px solid var(--rule-strong); border-left:2px solid var(--accent);
+  border-radius:2px; background:var(--surface)}
+.promptbox pre{margin:0; padding:1rem 1.1rem; font-family:var(--mono); font-size:.8125rem;
+  line-height:1.7; color:var(--ink); white-space:pre-wrap; word-break:break-word; overflow-x:auto}
+.promptbox .bar{display:flex; justify-content:space-between; align-items:center; gap:1rem;
+  padding:.5rem .75rem .5rem 1.1rem; border-top:1px solid var(--rule); flex-wrap:wrap}
+.promptbox .bar span{font-family:var(--mono); font-size:.6875rem; color:var(--ink-3)}
+.fill{color:var(--accent); font-weight:600}
+
+.howto{font-size:var(--s--1); border-left:2px solid var(--rule-strong); padding-left:.9rem}
+.howto b{color:var(--ink); font-weight:600}
+
+.verdict{display:flex; gap:.6rem; align-items:center; flex-wrap:wrap;
+  border-top:1px solid var(--rule); padding-top:.9rem}
+.verdict .lbl{font-family:var(--mono); font-size:.6875rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-3); margin-right:.2rem}
+.tally{font-family:var(--mono); font-size:.75rem; color:var(--ink-3); font-variant-numeric:tabular-nums}
+
+/* question board */
+.board{background:var(--surface); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+.qlist{display:flex; flex-direction:column; border-top:1px solid var(--rule-strong); margin-top:1.2rem}
+.qrow{display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:1rem; align-items:center;
+  padding:.9rem 0; border-bottom:1px solid var(--rule)}
+.vote{display:flex; flex-direction:column; align-items:center; gap:.1rem; background:transparent;
+  border:1px solid var(--rule-strong); border-radius:2px; padding:.35rem .55rem; cursor:pointer;
+  color:var(--ink-2); font-family:var(--mono); min-width:3rem}
+.vote:hover:not(:disabled){border-color:var(--accent); color:var(--accent)}
+.vote[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#FFF6F5}
+.vote .n{font-size:.9375rem; font-weight:600; font-variant-numeric:tabular-nums; line-height:1}
+.vote .c{font-size:.5rem; letter-spacing:.1em; text-transform:uppercase}
+.qrow .t{font-size:var(--s--1); color:var(--ink)}
+.qrow .st{font-family:var(--mono); font-size:.625rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); white-space:nowrap}
+.qrow .st.answered{color:var(--green)}
+
+/* forms */
+.form{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; max-width:38rem; margin-top:1.5rem}
 .field{display:flex; flex-direction:column; gap:.35rem}
 .field.full{grid-column:1 / -1}
-.field label{font-family:var(--mono); font-size:.6875rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); font-weight:500}
-.field input, .field select, .field textarea{
-  font:inherit; font-size:var(--s--1); color:var(--ink); background:var(--surface);
-  border:1px solid var(--rule-strong); border-radius:2px; padding:.6rem .75rem; width:100%;
-}
-.field textarea{resize:vertical; min-height:7rem; line-height:1.55}
+.field label{font-family:var(--mono); font-size:.6875rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500}
+.field input, .field select, .field textarea{font:inherit; font-size:var(--s--1); color:var(--ink);
+  background:var(--surface); border:1px solid var(--rule-strong); border-radius:2px; padding:.6rem .75rem; width:100%}
+.board .field input, .board .field select, .board .field textarea{background:var(--paper)}
+.field textarea{resize:vertical; min-height:5.5rem; line-height:1.55}
 .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--accent)}
 .form .actions{grid-column:1 / -1; display:flex; gap:.8rem; align-items:center; flex-wrap:wrap}
 .form .actions small{color:var(--ink-3); font-size:.75rem}
 @media (max-width:620px){ .form{grid-template-columns:1fr} }
-.outbox{
-  margin-top:1.5rem; max-width:38rem; border:1px solid var(--accent); border-radius:2px;
-  background:var(--accent-soft); padding:1.1rem 1.2rem; display:flex; flex-direction:column; gap:.8rem;
-}
-.outbox[hidden]{display:none}
-.outbox h4{font-family:var(--display); font-size:var(--s-1); color:var(--ink)}
-.outbox p{font-size:var(--s--1); color:var(--ink-2)}
-.outbox pre{
-  font-family:var(--mono); font-size:.75rem; line-height:1.6; color:var(--ink);
-  background:var(--surface); border:1px solid var(--rule); border-radius:2px;
-  padding:.8rem; margin:0; white-space:pre-wrap; word-break:break-word; max-height:14rem; overflow:auto;
-}
-.outbox .row{display:flex; gap:.6rem; flex-wrap:wrap}
 
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--rule); padding-block:2.5rem 3.5rem; color:var(--ink-3); font-size:var(--s--1)}
+.notice{border:1px solid var(--rule-strong); border-left:2px solid var(--accent); border-radius:2px;
+  background:var(--surface-2); padding:.85rem 1rem; font-size:var(--s--1); color:var(--ink-2);
+  display:flex; flex-direction:column; gap:.5rem}
+.notice[hidden]{display:none}
+.notice b{color:var(--ink)}
+.notice pre{font-family:var(--mono); font-size:.75rem; background:var(--surface); border:1px solid var(--rule);
+  border-radius:2px; padding:.7rem; margin:0; white-space:pre-wrap; word-break:break-word; max-height:12rem; overflow:auto}
+.offline{font-family:var(--mono); font-size:.625rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent-ink); border:1px solid var(--accent); border-radius:2px; padding:.1rem .4rem}
+
+.empty{padding:2rem 0; color:var(--ink-3); font-size:var(--s--1)}
+.empty[hidden]{display:none}
+
+footer{border-top:1px solid var(--rule); padding-block:2.2rem 3rem; color:var(--ink-3); font-size:var(--s--1)}
 footer .shell{display:flex; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; align-items:flex-start}
 footer .cols{display:flex; gap:3rem; flex-wrap:wrap}
 footer a{color:var(--ink-2); text-decoration:none}
 footer a:hover{color:var(--accent)}
-footer .disclaim{max-width:44ch; line-height:1.6}
+footer .disclaim{max-width:46ch; line-height:1.6}
 
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important; transition-duration:.01ms!important}
-}
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation-duration:.01ms!important; transition-duration:.01ms!important} }
 </style>
 </head>
 <body>
 
-<!-- DRAFT NOTICE — delete this entire element before launch -->
+<!-- DRAFT NOTICE — delete this element before launch -->
 <div class="draft" id="draftbar">
   <div class="shell">
-    <span><b>Draft.</b> Sample answers, pending Julie's review &mdash; not yet in her words.</span>
+    <span><b>Draft.</b> Example prompts written by Claude to show the format &mdash; replace with Julie's real ones. Voting and feedback need Supabase connected (see SETUP.md).</span>
     <button type="button" onclick="document.getElementById('draftbar').remove()">Dismiss</button>
   </div>
 </div>
@@ -263,271 +242,105 @@ footer .disclaim{max-width:44ch; line-height:1.6}
   <div class="shell">
     <a class="wordmark" href="#top" aria-label="Ask Julie — home"><svg viewBox="0 0 168 69" role="img" aria-label="Ask Julie"><g transform="translate(0 69) scale(1 -1)"><path d="M20.99 25.94L18.18 34.08C17.59 35.93 17.17 37.61 16.75 39.25L16.63 39.25C16.25 37.61 15.78 35.85 15.24 34.13L12.47 25.94ZM11.71 23.08L8.77 14.18L4.99 14.18L14.61 42.48L19.02 42.48L28.68 14.18L24.77 14.18L21.75 23.08Z" class="jt"/><path d="M31.96 17.91C33.09 17.24 35.03 16.49 36.88 16.49C39.52 16.49 40.78 17.79 40.78 19.51C40.78 21.27 39.73 22.24 37.04 23.25C33.35 24.59 31.63 26.57 31.63 29C31.63 32.28 34.31 34.97 38.64 34.97C40.7 34.97 42.5 34.42 43.59 33.71L42.71 31.06C41.92 31.52 40.44 32.24 38.55 32.24C36.37 32.24 35.19 30.98 35.19 29.47C35.19 27.74 36.37 26.99 39.02 25.98C42.5 24.68 44.35 22.91 44.35 19.85C44.35 16.23 41.54 13.72 36.79 13.72C34.56 13.72 32.51 14.3 31.08 15.14Z" class="jt"/><path d="M52.79 25.18L52.88 25.18C53.38 25.9 54.05 26.82 54.64 27.49L60.65 34.5L65.06 34.5L57.2 26.15L66.15 14.18L61.65 14.18L54.68 23.96L52.79 21.82L52.79 14.18L49.1 14.18L49.1 44L52.79 44Z" class="jt"/><path d="M83.6 64.53C86.59 64.53 88.49 62.3 88.49 59.4C88.49 56.33 86.59 54.17 83.6 54.17C80.78 54.17 78.71 56.33 78.71 59.4C78.71 62.3 80.7 64.53 83.52 64.53ZM87 47.79L86.83 45.64C86.59 41.41 87.91 37.76 91.56 33.45C95.54 28.81 98.69 24.66 98.69 19.11C98.69 12.81 94.38 6.84 84.84 6.84C80.45 6.84 75.81 8.17 72.99 10.24L74.98 15.46C77.05 13.8 80.37 12.89 83.35 12.89C88.58 12.89 91.23 15.79 91.23 20.02C91.23 23.67 89.15 26.9 85.43 31.29C81.28 36.27 79.79 41.16 80.29 45.64L80.45 47.79Z" class="jr"/><path d="M120.69 20.22C120.69 18.12 120.74 16.27 120.86 14.68L117.59 14.68L117.38 17.99L117.29 17.99C116.37 16.36 114.18 14.22 110.57 14.22C107.38 14.22 103.56 16.02 103.56 23.12L103.56 35L107.25 35L107.25 23.79C107.25 19.93 108.47 17.28 111.79 17.28C114.27 17.28 115.99 19 116.66 20.68C116.87 21.19 117 21.86 117 22.57L117 35L120.69 35Z" class="jt"/><path d="M126.83 44.5L130.52 44.5L130.52 14.68L126.83 14.68Z" class="jt"/><path d="M136.65 35L140.35 35L140.35 14.67L136.65 14.67ZM136.65 14.68M138.42 38.74C137.03 38.74 136.11 39.83 136.11 41.14C136.11 42.44 137.07 43.49 138.5 43.49C139.93 43.49 140.85 42.44 140.85 41.14C140.85 39.83 139.93 38.74 138.46 38.74Z" class="jt"/><path d="M159.38 26.86C159.42 29.17 158.41 32.86 154.29 32.86C150.51 32.86 148.92 29.42 148.62 26.86ZM148.58 24.21C148.67 19.21 151.81 17.15 155.51 17.15C158.16 17.15 159.8 17.62 161.14 18.16L161.81 15.56C160.51 14.97 158.24 14.26 155.01 14.26C148.79 14.26 145.01 18.41 145.01 24.5C145.01 30.68 148.67 35.51 154.59 35.51C161.22 35.51 162.95 29.67 162.95 25.93C162.95 25.18 162.9 24.59 162.82 24.17Z" class="jt"/></g></svg></a>
     <nav>
-      <a href="#register">Questions</a>
+      <a href="#library">Prompts</a>
+      <a href="#board">Questions</a>
       <a href="#about">About</a>
-      <a href="#ask">Ask</a>
     </nav>
   </div>
 </header>
 
 <main id="top" class="ruled">
 
-  <!-- ================= HERO ================= -->
   <div class="hero shell">
-    <p class="eyebrow" style="margin-bottom:1.2rem">Homeschooling in California · San Jose</p>
-    <h1>Homeschooling is a <em>filing</em>, not a leap of faith.</h1>
-    <p class="lede">I've homeschooled four kids through the California system and I keep the books like the accountant I trained as. Ask me anything &mdash; the answer goes in the register, free, for the next family.</p>
-
-    <form class="askbar" id="quickask">
-      <input type="text" name="q" placeholder="What do you want to ask?" aria-label="Your question">
-      <button class="btn" type="submit">Ask &rarr;</button>
-    </form>
+    <p class="eyebrow" style="margin-bottom:1.2rem">AI prompts for homeschooling &middot; San Jose</p>
+    <h1>Prompts that <em>earned</em> their place at our table.</h1>
+    <p class="lede">I homeschool four kids and I use AI every week &mdash; but most prompts people share produce confident nonsense. These are the ones that survived contact with a real school day. Copy any of them. Then tell me whether it worked for you.</p>
 
     <dl class="facts">
       <div>
-        <dt class="eyebrow">Private school affidavit</dt>
-        <dd id="psa-status" class="flag">Window opens Oct 1</dd>
+        <dt class="eyebrow">Prompts in the library</dt>
+        <dd><span id="pcount">8</span> &middot; free to copy</dd>
       </div>
       <div>
-        <dt class="eyebrow">Questions answered</dt>
-        <dd><span id="qcount">10</span> &middot; free to read</dd>
+        <dt class="eyebrow">Questions open for votes</dt>
+        <dd><span id="qopen">&mdash;</span></dd>
       </div>
       <div>
-        <dt class="eyebrow">Where</dt>
-        <dd>San Jose, California</dd>
+        <dt class="eyebrow">What it costs</dt>
+        <dd>Nothing, ever</dd>
       </div>
     </dl>
   </div>
 
-  <!-- ================= ABOUT ================= -->
-  <section class="about" id="about">
-    <div class="shell about-grid">
-      <div>
-        <div class="sec-head"><span class="eyebrow">Who's answering</span><h2>Julie Handel</h2></div>
-        <div class="prose">
-          <p>I trained in <strong>accounting</strong>, then spent the last decade homeschooling four children in San Jose &mdash; through the private school affidavit, through a satellite program, through one charter year we didn't repeat, and now through high school transcripts that had to survive a college admissions office.</p>
-          <p>Most homeschool advice is either legal boilerplate or someone's philosophy. What I found missing was the boring middle: <strong>what you actually have to file, keep, and be able to produce</strong> if anyone ever asks. That's a records problem, and records are what I'm good at.</p>
-          <p>So that is what this is. The register below is free and always will be &mdash; ask anything, and the answer goes in it where the next family can find it.</p>
-        </div>
-      </div>
-      <ul class="creds">
-        <li><b>4</b> children homeschooled, ages 7 to 17</li>
-        <li><b>10</b> years under California law</li>
-        <li><b>3</b> legal pathways used firsthand &mdash; PSA, satellite program, charter</li>
-        <li><b>2</b> transcripts built and accepted</li>
-        <li><b>1</b> spreadsheet that runs the whole thing</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ================= REGISTER ================= -->
-  <section class="register" id="register">
+  <!-- ================= LIBRARY ================= -->
+  <section class="lib" id="library">
     <div class="shell">
-      <div class="sec-head">
-        <span class="eyebrow">The register</span>
-        <h2>Questions, answered and filed</h2>
-      </div>
-      <p class="prose" style="margin-bottom:1.8rem">Every question anyone asks me gets a number and a permanent answer. Search it before you write &mdash; yours may already be here.</p>
+      <div class="sec-head"><span class="eyebrow">The library</span><h2>Prompts, and how I actually use them</h2></div>
+      <p class="prose" style="margin-bottom:1.4rem">Each one is written to be pasted straight in. <span class="fill">Square brackets</span> are the parts you replace. Where a prompt has an instruction that looks fussy, it's usually there because leaving it out produced something useless.</p>
 
       <div class="controls">
-        <div class="search">
-          <input type="search" id="q-search" placeholder="Search the register…" aria-label="Search questions">
-        </div>
-        <div class="chips" id="q-chips" role="group" aria-label="Filter by topic">
-          <button class="chip" type="button" data-topic="all" aria-pressed="true">All</button>
-          <button class="chip" type="button" data-topic="Getting started" aria-pressed="false">Getting started</button>
-          <button class="chip" type="button" data-topic="Legal &amp; records" aria-pressed="false">Legal &amp; records</button>
-          <button class="chip" type="button" data-topic="Money" aria-pressed="false">Money</button>
-          <button class="chip" type="button" data-topic="Curriculum" aria-pressed="false">Curriculum</button>
-          <button class="chip" type="button" data-topic="High school" aria-pressed="false">High school</button>
-          <button class="chip" type="button" data-topic="Day to day" aria-pressed="false">Day to day</button>
+        <div class="search"><input type="search" id="p-search" placeholder="Search prompts&hellip;" aria-label="Search prompts"></div>
+        <div class="chips" id="p-chips" role="group" aria-label="Filter by category">
+          <button class="chip" type="button" data-cat="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" aria-pressed="false">Planning</button>
+          <button class="chip" type="button" aria-pressed="false">Teaching</button>
+          <button class="chip" type="button" aria-pressed="false">Assessment</button>
+          <button class="chip" type="button" aria-pressed="false">Records</button>
+          <button class="chip" type="button" aria-pressed="false">Reading</button>
+          <button class="chip" type="button" aria-pressed="false">Math</button>
         </div>
       </div>
 
-      <div class="entries" id="entries">
-
-        <details class="entry" data-topic="Getting started" open>
-          <summary><span class="num">Q-001</span><span class="q">Do I have to tell anyone I'm homeschooling in California?</span><span class="topic">Getting started</span></summary>
-          <div class="answer">
-            <p>Yes &mdash; not in the sense of asking permission, but in the sense that your child has to be legally enrolled <em>somewhere</em>. California doesn't have a "homeschool law"; it has four doors, and you have to be standing in one of them.</p>
-            <ul>
-              <li><strong>File your own private school affidavit (PSA).</strong> You become a small private school. Most independence, most paperwork on you.</li>
-              <li><strong>Enroll in a private school satellite program (PSP).</strong> An umbrella private school files the affidavit and holds the records; you teach. Costs money, removes admin.</li>
-              <li><strong>Public charter or district independent study.</strong> Public funding and often a materials allowance, in exchange for public school reporting, assignments, and oversight.</li>
-              <li><strong>Hire a credentialed tutor.</strong> Legal, rarely practical.</li>
-            </ul>
-            <p>Nobody grants you approval and nobody inspects you on the way in. What matters is that if a district ever asks, you can name your door and produce the records that go with it.</p>
-            <p class="note">Compulsory education in California runs from age 6 to 18. Below 6, none of this applies yet &mdash; you can simply not enroll.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="Legal &amp; records">
-          <summary><span class="num">Q-002</span><span class="q">What records do I actually have to keep?</span><span class="topic">Legal &amp; records</span></summary>
-          <div class="answer">
-            <p>If you've filed your own affidavit, the Education Code asks a private school for a short, specific list. It is much less than people fear, and much more specific than people assume.</p>
-            <ul>
-              <li><strong>An attendance register</strong> &mdash; days of instruction, kept as you go, not reconstructed in June.</li>
-              <li><strong>A course of study</strong> &mdash; what subjects each child is being taught this year.</li>
-              <li><strong>A faculty list with qualifications</strong> &mdash; that's you. No credential required.</li>
-              <li>Instruction in English, in the branches of study taught in public schools.</li>
-            </ul>
-            <p>That's the legal floor. The floor is not the goal. I keep more than that &mdash; work samples, a running course description file, reading lists &mdash; not because anyone requires it, but because a transcript is far easier to build from records than from memory, and memory is where most families lose four years of evidence.</p>
-            <p class="note">Keep it boring and contemporaneous. One spreadsheet, updated weekly, beats a beautiful binder assembled in a panic.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="Legal &amp; records">
-          <summary><span class="num">Q-003</span><span class="q">When is the affidavit due, and what happens if I miss it?</span><span class="topic">Legal &amp; records</span></summary>
-          <div class="answer">
-            <p>The filing window is <strong>October 1&ndash;15</strong>, annually, online with the California Department of Education. It's short, it's the same fortnight every year, and it's the single date I'd put in your calendar today with a two-week warning on it.</p>
-            <p>Miss it and the sky does not fall &mdash; but on paper you have a child of compulsory school age enrolled nowhere, and that is the situation you do not want to be explaining to a district. The fix is to file as soon as you realize, or to enroll in a satellite program that files on your behalf.</p>
-            <p>Starting mid-year is a different case entirely and is genuinely fine; the affidavit is an annual snapshot, not a starting gun.</p>
-            <p class="note">Filing is free. Anyone charging you a fee to file an affidavit is selling you a satellite program &mdash; which may be worth it, but know which one you're buying.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="Getting started">
-          <summary><span class="num">Q-004</span><span class="q">Should I file my own affidavit or join a satellite program?</span><span class="topic">Getting started</span></summary>
-          <div class="answer">
-            <p>This is the most common question I get, and the honest answer is that it depends on one thing: whether administration is a burden to you or a comfort.</p>
-            <p><strong>File your own</strong> if you are organized, want zero oversight, want it free, and are comfortable being the only person responsible for your records. This is where I ended up.</p>
-            <p><strong>Join a satellite program</strong> if you want someone else holding the records, a transcript service at the end, a community, and a person to call when you're unsure. You'll pay somewhere in the low hundreds to low thousands per year, and you'll accept their requirements &mdash; some ask for work samples or attendance reporting on their schedule.</p>
-            <p>Neither is more legitimate than the other. What actually predicts a good year is whether the records get kept, and you should pick the option under which <em>you</em> will keep them.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="Money">
-          <summary><span class="num">Q-005</span><span class="q">What does homeschooling actually cost?</span><span class="topic">Money</span></summary>
-          <div class="answer">
-            <p>Far less than people assume, and in a distribution that surprises them. Here's a real per-child year at the middle of my range &mdash; one elementary-age child, filing our own affidavit, no satellite program.</p>
-            <div class="tbl-wrap">
-              <table class="cost">
-                <thead><tr><th scope="col">Line item</th><th scope="col">Per child / year</th></tr></thead>
-                <tbody>
-                  <tr><td>Core curriculum (math, language arts)</td><td>$310</td></tr>
-                  <tr><td>Everything else &mdash; science, history, readers</td><td>$180</td></tr>
-                  <tr><td>Consumables, printing, lab and art supplies</td><td>$145</td></tr>
-                  <tr><td>Co-op or class fees</td><td>$400</td></tr>
-                  <tr><td>Music, sport, one outside activity</td><td>$720</td></tr>
-                  <tr><td>Standardized testing (optional)</td><td>$55</td></tr>
-                  <tr><td>Affidavit filing</td><td>$0</td></tr>
-                  <tr><td>Total</td><td>$1,810</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p>Two things to notice. The <strong>legal part is free</strong>. And the largest line isn't curriculum &mdash; it's activities, which are optional and where every family's number diverges. A determined library-and-secondhand year runs under $400 a child; a satellite program with outsourced high school classes runs several thousand.</p>
-            <p class="note">The cost nobody puts in the spreadsheet is the income you don't earn. That one is real, it's usually the largest number on the page, and it deserves to be decided deliberately rather than discovered later.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="High school">
-          <summary><span class="num">Q-006</span><span class="q">How do I make a transcript a college will actually accept?</span><span class="topic">High school</span></summary>
-          <div class="answer">
-            <p>A homeschool transcript is a one-page document you produce yourself, and admissions offices see them constantly. It is not exotic. It has to be <em>legible and consistent</em>, which is a lower bar than "impressive."</p>
-            <ul>
-              <li>Course title, year taken, credits, grade &mdash; four columns, by year.</li>
-              <li>One credit = roughly a year-long course. Be consistent about how you decided that and write the rule down.</li>
-              <li>A short course-description document to accompany it: two or three sentences per course, plus texts used.</li>
-              <li>Your grading scale, stated plainly at the bottom. Yes, you may assign grades. Yes, you should be willing to defend them.</li>
-            </ul>
-            <p>For the UC and CSU systems, homeschooled applicants generally come in through the exam and community college routes rather than the A&ndash;G course list, since A&ndash;G approval attaches to accredited course providers. <strong>Community college coursework during high school is the single strongest thing you can put on the page</strong> &mdash; it's externally graded, transferable, and settles the credibility question outright.</p>
-            <p class="note">Build the transcript in ninth grade and update it each June. Reconstructing four years at once is the most avoidable misery in homeschooling.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="Day to day">
-          <summary><span class="num">Q-007</span><span class="q">How many hours a day should we actually be doing?</span><span class="topic">Day to day</span></summary>
-          <div class="answer">
-            <p>Less than you think, and the gap between the honest answer and the expected one is why so many first years feel like failures.</p>
-            <p>For a six- to eight-year-old, focused academic work is realistically <strong>60 to 90 minutes</strong>. Middle years, two to three hours. High school approaches a full workload, four to six hours, because the material genuinely demands it. Everything past that in the early years is either handwriting practice or theater.</p>
-            <p>A school day is long because it's moving thirty children through a building. You're moving one, at their pace, with no transitions and no waiting. The efficiency is not a shortcut you're getting away with &mdash; it's the entire mechanism.</p>
-            <p class="note">Track days of instruction, not hours. It's what the register asks for, and it stops you grading yourself against a clock that was never measuring your situation.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="Day to day">
-          <summary><span class="num">Q-008</span><span class="q">Can I homeschool with a toddler in the house?</span><span class="topic">Day to day</span></summary>
-          <div class="answer">
-            <p>Yes, and it's the single most underestimated logistical problem in homeschooling &mdash; far harder than any academic question on this page.</p>
-            <p>What worked here: do the one subject that genuinely requires my full attention during the toddler's nap, and protect that window like a meeting. Everything else &mdash; reading aloud, history, anything that tolerates interruption &mdash; happens with the toddler in the room and given a job. A basket of things only allowed out during school hours buys more than any curriculum choice.</p>
-            <p>The older children also carry some of it, in short defined shifts, not as unpaid childcare. Twenty minutes, named in advance, is sustainable. "Watch your brother while I teach" is not.</p>
-            <p>The year will be less tidy than the plan. The plan should be written knowing that.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="Curriculum">
-          <summary><span class="num">Q-009</span><span class="q">My child is behind in math. Do I hold them back?</span><span class="topic">Curriculum</span></summary>
-          <div class="answer">
-            <p>No &mdash; because "behind" is a grade-level concept, and grade levels are an artifact of grouping thirty children by birthday. You don't have that constraint, and adopting its vocabulary imports a problem you were free of.</p>
-            <p>What's actually true is narrower and more useful: there's a specific skill that isn't solid, and everything downstream of it is wobbling. Almost always it's fractions, place value, or unmemorized multiplication facts. Find the exact rung, go back to it, and rebuild from there &mdash; even if that means a nine-year-old spending six weeks on something labeled second grade.</p>
-            <p>Six weeks of that is faster than two years of accumulating gaps. This is the closest thing homeschooling has to a superpower and most families are too embarrassed to use it.</p>
-            <p class="note">If the gap doesn't close with focused work over a term, that's a signal worth taking to an evaluation rather than more curriculum.</p>
-          </div>
-        </details>
-
-        <details class="entry" data-topic="Money">
-          <summary><span class="num">Q-010</span><span class="q">Charter school funds &mdash; is the money worth it?</span><span class="topic">Money</span></summary>
-          <div class="answer">
-            <p>We did one charter year and didn't repeat it, so take this as one family's arithmetic rather than a verdict.</p>
-            <p>The offer is real: a per-child instructional funds allowance, often in the high hundreds to low thousands, spendable on approved vendors, classes, and materials. For a family stretched thin, that is not nothing.</p>
-            <p>What you trade is that <strong>your child is enrolled in public school</strong>. That means an assigned education specialist, work samples submitted on their calendar, state testing, curriculum restricted to secular approved vendors, and the funds themselves being district property with rules about what they touch. Some families find the structure genuinely supportive. I found I was doing more paperwork for someone else's compliance than I'd ever done for my own.</p>
-            <p class="note">Ask one question before enrolling: how many work samples per month, and who decides if they're sufficient? The answer tells you what the money actually costs.</p>
-          </div>
-        </details>
-
-      </div>
-      <p class="empty" id="empty" hidden>No questions match that. <a href="#ask">Ask it</a> and it'll be here.</p>
+      <div class="entries" id="entries"></div>
+      <p class="empty" id="p-empty" hidden>No prompts match that. <a href="#ask">Ask for one</a> and it may end up here.</p>
     </div>
   </section>
 
-
-  <!-- ================= ASK ================= -->
-  <section id="ask">
+  <!-- ================= QUESTION BOARD ================= -->
+  <section class="board" id="board">
     <div class="shell">
-      <div class="sec-head">
-        <span class="eyebrow">Ask</span>
-        <h2>Send me a question</h2>
-      </div>
-      <p class="prose">Free, and I answer everything. Good ones go into the register with your name kept off it.</p>
+      <div class="sec-head"><span class="eyebrow">The board</span><h2>What should I work on next?</h2></div>
+      <p class="prose">Ask for a prompt you wish existed, or a homeschooling problem you'd like AI to help with. Everything posted here is public, and anyone can vote. <strong>I work top-down.</strong> The ones with the most votes get built into prompts and added to the library.</p>
 
+      <div id="board-state"></div>
+      <div class="qlist" id="qlist"></div>
+      <p class="empty" id="q-empty" hidden>Nothing on the board yet. Be the first.</p>
+
+      <div class="sec-head" style="margin-top:2.5rem"><span class="eyebrow">Add to the board</span></div>
       <form class="form" id="askform" novalidate>
-        <div class="field">
-          <label for="f-name">Your name</label>
-          <input type="text" id="f-name" name="name" autocomplete="name">
-        </div>
-        <div class="field">
-          <label for="f-contact">Email</label>
-          <input type="email" id="f-contact" name="contact" autocomplete="email" placeholder="so I can reply">
-        </div>
         <div class="field full">
-          <label for="f-topic">Topic</label>
-          <select id="f-topic" name="topic">
-            <option>Getting started</option>
-            <option>Legal &amp; records</option>
-            <option>Money</option>
-            <option>Curriculum</option>
-            <option>High school</option>
-            <option>Day to day</option>
+          <label for="f-q">Your question or request</label>
+          <textarea id="f-q" name="question" maxlength="400" placeholder="e.g. A prompt that turns a museum trip into a week of follow-up work for three different ages."></textarea>
+        </div>
+        <div class="field">
+          <label for="f-name">Name or initials <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+          <input type="text" id="f-name" name="name" maxlength="40" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="f-cat">Category</label>
+          <select id="f-cat" name="category">
+            <option>Planning</option><option>Teaching</option><option>Assessment</option>
+            <option>Records</option><option>Reading</option><option>Math</option><option>Something else</option>
           </select>
         </div>
-        <div class="field full">
-          <label for="f-question">Your question</label>
-          <textarea id="f-question" name="question" placeholder="As specific as you can make it — ages, what you've tried, what's actually worrying you."></textarea>
-        </div>
+        <div class="field full" id="ts-slot"></div>
         <div class="actions">
-          <button class="btn" type="submit">Send question</button>
-          <small>No list, no newsletter. Your email is only used to answer you.</small>
+          <button class="btn" type="submit" id="q-submit">Post to the board</button>
+          <small>Public. No email required, no list, no newsletter.</small>
         </div>
       </form>
+      <div class="notice" id="q-notice" hidden></div>
+    </div>
+  </section>
 
-      <div class="outbox" id="outbox" hidden>
-        <h4 id="outbox-title">Not connected yet</h4>
-        <p id="outbox-msg">This form has no delivery address wired up. Copy your question below and email it to <a href="mailto:hello@askjulie.com">hello@askjulie.com</a> &mdash; it'll be answered either way.</p>
-        <pre id="outbox-body"></pre>
-        <div class="row">
-          <button class="btn" type="button" id="copy-btn">Copy question</button>
-          <a class="btn ghost" id="mail-btn" href="#">Open in email</a>
-        </div>
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="shell">
+      <div class="sec-head"><span class="eyebrow">Who's collecting these</span><h2>Julie Handel</h2></div>
+      <div class="prose">
+        <p>I trained in <strong>accounting</strong> and I've homeschooled four children in San Jose for the last decade. I started keeping these prompts because I kept re-typing the same instructions and kept getting the same failure &mdash; plausible, confident output that fell apart the moment a real seven-year-old sat down in front of it.</p>
+        <p>So the ones here are <strong>the ones that held up</strong>. Most of them are long because the constraints are doing the work. The instruction telling the model not to recommend books it isn't sure exist is not decoration; it is the difference between a usable list and an afternoon at the library looking for something that was never written.</p>
+        <p>Nothing here is a course, and I'm not selling anything. If a prompt fails for you, say so on it &mdash; that's more useful to the next parent than another success story.</p>
       </div>
     </div>
   </section>
@@ -538,159 +351,16 @@ footer .disclaim{max-width:44ch; line-height:1.6}
     <div class="cols">
       <div>
         <p class="eyebrow" style="margin-bottom:.5rem">Ask Julie</p>
-        <p><a href="#register">Questions</a><br><a href="#about">About</a><br><a href="#ask">Ask a question</a></p>
+        <p><a href="#library">Prompts</a><br><a href="#board">Questions</a><br><a href="#about">About</a></p>
       </div>
       <div>
         <p class="eyebrow" style="margin-bottom:.5rem">Contact</p>
         <p><a href="mailto:hello@askjulie.com">hello@askjulie.com</a><br>San Jose, California</p>
       </div>
     </div>
-    <p class="disclaim">Julie Handel is a homeschooling parent, not an attorney. Everything here is what worked for one family under California law &mdash; useful, and not a substitute for legal advice on your own situation.</p>
+    <p class="disclaim">Prompts are shared as-is by one homeschooling parent. AI models make mistakes confidently &mdash; check anything that matters, especially anything legal, medical, or going on a transcript.</p>
   </div>
 </footer>
-
-<script>
-(function(){
-  "use strict";
-
-  /* Where submitted questions go. Set this to a Formsubmit.co address or a
-     Google Apps Script /exec URL and the form starts delivering. Until then
-     it falls back to copy-and-email, which is honest rather than a fake success. */
-  var FORM_ENDPOINT = "";
-  var CONTACT_EMAIL = "hello@askjulie.com";
-
-  /* ---- live count of answered questions ---- */
-  var entries = Array.prototype.slice.call(document.querySelectorAll(".entry"));
-  var qcount = document.getElementById("qcount");
-  if (qcount) qcount.textContent = entries.length;
-
-  /* ---- California private school affidavit: Oct 1–15 each year ---- */
-  (function psa(){
-    var el = document.getElementById("psa-status");
-    if (!el) return;
-    var now = new Date();
-    var y = now.getFullYear();
-    var day = function(m, d, yr){ return new Date(yr, m, d); };
-    var opens = day(9, 1, y), closes = day(9, 15, y);
-    var today = day(now.getMonth(), now.getDate(), y);
-    var DAY = 86400000;
-    if (today < opens) {
-      var n = Math.round((opens - today) / DAY);
-      el.textContent = "Opens in " + n + " day" + (n === 1 ? "" : "s");
-    } else if (today <= closes) {
-      var c = Math.round((closes - today) / DAY);
-      el.textContent = c === 0 ? "Closes today" : "Closes in " + c + " day" + (c === 1 ? "" : "s");
-    } else {
-      el.textContent = "Next window Oct 1, " + (y + 1);
-      el.classList.remove("flag");
-    }
-  })();
-
-  /* ---- register: search + topic filter ---- */
-  var search = document.getElementById("q-search");
-  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
-  var empty = document.getElementById("empty");
-  var topic = "all";
-
-  function apply(){
-    var term = (search && search.value || "").trim().toLowerCase();
-    var shown = 0;
-    entries.forEach(function(el){
-      var t = el.getAttribute("data-topic") || "";
-      var okTopic = topic === "all" || t === topic;
-      var okTerm = !term || el.textContent.toLowerCase().indexOf(term) !== -1;
-      var show = okTopic && okTerm;
-      el.hidden = !show;
-      if (show) shown++;
-      if (show && term) el.open = true;
-    });
-    if (empty) empty.hidden = shown !== 0;
-  }
-
-  if (search) search.addEventListener("input", apply);
-  chips.forEach(function(chip){
-    chip.addEventListener("click", function(){
-      chips.forEach(function(c){ c.setAttribute("aria-pressed", String(c === chip)); });
-      var raw = chip.getAttribute("data-topic");
-      topic = raw === "all" ? "all" : chip.textContent.trim();
-      apply();
-    });
-  });
-
-  /* ---- hero quick-ask hands off to the full form ---- */
-  var quick = document.getElementById("quickask");
-  if (quick) quick.addEventListener("submit", function(e){
-    e.preventDefault();
-    var v = quick.querySelector("input").value;
-    var box = document.getElementById("f-question");
-    if (box) { box.value = v; }
-    document.getElementById("ask").scrollIntoView({ behavior: "smooth", block: "start" });
-    if (box) setTimeout(function(){ box.focus(); }, 400);
-  });
-
-  /* ---- the ask form ---- */
-  var form = document.getElementById("askform");
-  var outbox = document.getElementById("outbox");
-
-  function compose(d){
-    return "Topic: " + d.topic + "\nName: " + (d.name || "(not given)") +
-           "\nEmail: " + (d.contact || "(not given)") + "\n\n" + d.question;
-  }
-
-  if (form) form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var d = {
-      name: form.name.value.trim(),
-      contact: form.contact.value.trim(),
-      topic: form.topic.value,
-      question: form.question.value.trim()
-    };
-    if (!d.question) {
-      form.question.focus();
-      form.question.style.borderColor = "var(--accent)";
-      return;
-    }
-    var body = compose(d);
-    document.getElementById("outbox-body").textContent = body;
-    document.getElementById("mail-btn").href =
-      "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Question: " + d.topic) +
-      "&body=" + encodeURIComponent(body);
-
-    if (!FORM_ENDPOINT) {
-      outbox.hidden = false;
-      outbox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      return;
-    }
-
-    fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(d)
-    }).then(function(r){
-      if (!r.ok) throw new Error("bad status");
-      document.getElementById("outbox-title").textContent = "Sent — thank you";
-      document.getElementById("outbox-msg").textContent =
-        "Your question is with me. I answer everything, usually within a few days.";
-      outbox.hidden = false;
-      form.reset();
-    }).catch(function(){
-      document.getElementById("outbox-title").textContent = "That didn't send";
-      document.getElementById("outbox-msg").innerHTML =
-        'Something went wrong on the way out. Copy the question below and email it to <a href="mailto:' +
-        CONTACT_EMAIL + '">' + CONTACT_EMAIL + "</a> instead.";
-      outbox.hidden = false;
-    });
-  });
-
-  var copy = document.getElementById("copy-btn");
-  if (copy) copy.addEventListener("click", function(){
-    var text = document.getElementById("outbox-body").textContent;
-    var done = function(){ copy.textContent = "Copied"; setTimeout(function(){ copy.textContent = "Copy question"; }, 1800); };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, done);
-    } else { done(); }
-  });
-})();
-</script>
+<script src="app.js"></script>
 </body>
 </html>
