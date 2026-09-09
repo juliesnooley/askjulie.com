@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ask Julie</title>
-<meta name="description" content="Straight answers about homeschooling in California, and consulting for families who want the paperwork done right.">
+<meta name="description" content="A free, growing register of straight answers about homeschooling in California.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -204,23 +204,6 @@ table.cost td:last-child, table.cost th:last-child{text-align:right; font-family
 table.cost tr:last-child td{border-bottom:0; font-weight:600; color:var(--ink)}
 .empty{padding:2.5rem 0; color:var(--ink-3); font-size:var(--s--1)}
 
-/* ---------- consulting ---------- */
-.consulting{background:var(--surface); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule)}
-.schedule{display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:2rem}
-.svc{background:var(--surface); padding:1.5rem 1.4rem; display:flex; flex-direction:column; gap:.7rem}
-.svc h3{font-size:var(--s-1); font-weight:600}
-.svc .meta{font-family:var(--mono); font-size:.6875rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
-.svc p{font-size:var(--s--1); color:var(--ink-2); flex:1}
-.svc ul{margin:0; padding-left:1.05rem; font-size:var(--s--1); color:var(--ink-2); display:flex; flex-direction:column; gap:.35rem}
-.svc .price{
-  font-family:var(--mono); font-size:var(--s-2); font-weight:500; font-variant-numeric:tabular-nums;
-  color:var(--ink); display:flex; align-items:baseline; gap:.5rem; padding-top:.4rem; border-top:1px solid var(--rule);
-}
-.tag{
-  font-family:var(--mono); font-size:.5625rem; letter-spacing:.1em; text-transform:uppercase;
-  background:var(--accent-soft); color:var(--accent-ink); padding:.15rem .4rem; border-radius:2px; font-weight:600;
-}
-
 /* ---------- ask form ---------- */
 .form{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; max-width:38rem; margin-top:1.8rem}
 .field{display:flex; flex-direction:column; gap:.35rem}
@@ -267,7 +250,7 @@ footer .disclaim{max-width:44ch; line-height:1.6}
 <!-- DRAFT NOTICE — delete this entire element before launch -->
 <div class="draft" id="draftbar">
   <div class="shell">
-    <span><b>Draft.</b> Sample answers and placeholder rates, pending Julie's review. Nothing here is filed, priced, or final.</span>
+    <span><b>Draft.</b> Sample answers, pending Julie's review &mdash; not yet in her words.</span>
     <button type="button" onclick="document.getElementById('draftbar').remove()">Dismiss</button>
   </div>
 </div>
@@ -277,8 +260,7 @@ footer .disclaim{max-width:44ch; line-height:1.6}
     <a class="wordmark" href="#top">Ask Julie<span class="dot" aria-hidden="true"></span></a>
     <nav>
       <a href="#register">Questions</a>
-      <a href="#consulting">Consulting</a>
-      <a href="#about" class="hide-sm">About</a>
+      <a href="#about">About</a>
       <a href="#ask">Ask</a>
     </nav>
   </div>
@@ -307,8 +289,8 @@ footer .disclaim{max-width:44ch; line-height:1.6}
         <dd><span id="qcount">10</span> &middot; free to read</dd>
       </div>
       <div>
-        <dt class="eyebrow">Consulting</dt>
-        <dd>Bay Area &amp; remote</dd>
+        <dt class="eyebrow">Where</dt>
+        <dd>San Jose, California</dd>
       </div>
     </dl>
   </div>
@@ -321,7 +303,7 @@ footer .disclaim{max-width:44ch; line-height:1.6}
         <div class="prose">
           <p>I trained in <strong>accounting</strong>, then spent the last decade homeschooling four children in San Jose &mdash; through the private school affidavit, through a satellite program, through one charter year we didn't repeat, and now through high school transcripts that had to survive a college admissions office.</p>
           <p>Most homeschool advice is either legal boilerplate or someone's philosophy. What I found missing was the boring middle: <strong>what you actually have to file, keep, and be able to produce</strong> if anyone ever asks. That's a records problem, and records are what I'm good at.</p>
-          <p>So this site is two things. The register below is free and always will be. If you'd rather not read ten answers and would like someone to sit down and set your year up properly, that's the <a href="#consulting">consulting</a>.</p>
+          <p>So that is what this is. The register below is free and always will be &mdash; ask anything, and the answer goes in it where the next family can find it.</p>
         </div>
       </div>
       <ul class="creds">
@@ -494,69 +476,6 @@ footer .disclaim{max-width:44ch; line-height:1.6}
     </div>
   </section>
 
-  <!-- ================= CONSULTING ================= -->
-  <section class="consulting" id="consulting">
-    <div class="shell">
-      <div class="sec-head">
-        <span class="eyebrow">Consulting</span>
-        <h2>Or have someone set it up with you</h2>
-      </div>
-      <p class="prose">The register is free and covers most of what most families need. Sometimes what you want is not another article but ninety minutes with someone who has filed the forms, built the transcript, and will look at <em>your</em> four children and tell you what to do on Monday. That's this.</p>
-
-      <div class="schedule">
-        <div class="svc">
-          <span class="meta">01 · 90 minutes · remote or San Jose</span>
-          <h3>Getting Started</h3>
-          <p>You've decided to homeschool, or you're deciding. We pick your legal pathway, file correctly, and leave with a first-year plan and a records system already set up.</p>
-          <ul>
-            <li>Which of the four doors fits your family</li>
-            <li>Affidavit filed together, or PSP shortlisted</li>
-            <li>Your attendance register and course of study, built</li>
-          </ul>
-          <span class="price">$225 <span class="tag">draft rate</span></span>
-        </div>
-
-        <div class="svc">
-          <span class="meta">02 · 2 hours + follow-up</span>
-          <h3>Year Setup</h3>
-          <p>For families already homeschooling who want the year planned properly rather than assembled in August. Per child, across all your children.</p>
-          <ul>
-            <li>Course of study for each child</li>
-            <li>Curriculum chosen against budget, not marketing</li>
-            <li>A weekly rhythm that survives a toddler</li>
-            <li>One follow-up call in October</li>
-          </ul>
-          <span class="price">$395 <span class="tag">draft rate</span></span>
-        </div>
-
-        <div class="svc">
-          <span class="meta">03 · 2 hours + transcript build</span>
-          <h3>High School &amp; Transcript</h3>
-          <p>The four years that carry real consequences. A plan built backwards from where your child might apply, and a transcript that holds up.</p>
-          <ul>
-            <li>Four-year course map and credit rules</li>
-            <li>Community college and exam pathways</li>
-            <li>Transcript and course descriptions, built with you</li>
-          </ul>
-          <span class="price">$495 <span class="tag">draft rate</span></span>
-        </div>
-
-        <div class="svc">
-          <span class="meta">04 · 30 minutes · as needed</span>
-          <h3>Office Hours</h3>
-          <p>One question, one call, no package. For when something specific has come up mid-year and you want an answer today.</p>
-          <ul>
-            <li>Free if the answer belongs in the register</li>
-          </ul>
-          <span class="price">$75 <span class="tag">draft rate</span></span>
-        </div>
-      </div>
-
-      <div class="prose" style="margin-top:2rem">
-        <p><strong>How to book:</strong> ask below and say which one you're after, or email <a href="mailto:hello@askjulie.com">hello@askjulie.com</a>. I'll reply with times. Remote anywhere; in person around San Jose and the South Bay.</p>
-      </div>
-    </div>
-  </section>
 
   <!-- ================= ASK ================= -->
   <section id="ask">
@@ -565,7 +484,7 @@ footer .disclaim{max-width:44ch; line-height:1.6}
         <span class="eyebrow">Ask</span>
         <h2>Send me a question</h2>
       </div>
-      <p class="prose">Free, and I answer everything. Good ones go into the register with your name kept off it. If you're asking about consulting, say so and I'll reply directly instead.</p>
+      <p class="prose">Free, and I answer everything. Good ones go into the register with your name kept off it.</p>
 
       <form class="form" id="askform" novalidate>
         <div class="field">
@@ -585,7 +504,6 @@ footer .disclaim{max-width:44ch; line-height:1.6}
             <option>Curriculum</option>
             <option>High school</option>
             <option>Day to day</option>
-            <option>Booking a consultation</option>
           </select>
         </div>
         <div class="field full">
@@ -616,7 +534,7 @@ footer .disclaim{max-width:44ch; line-height:1.6}
     <div class="cols">
       <div>
         <p class="eyebrow" style="margin-bottom:.5rem">Ask Julie</p>
-        <p><a href="#register">Questions</a><br><a href="#consulting">Consulting</a><br><a href="#ask">Ask a question</a></p>
+        <p><a href="#register">Questions</a><br><a href="#about">About</a><br><a href="#ask">Ask a question</a></p>
       </div>
       <div>
         <p class="eyebrow" style="margin-bottom:.5rem">Contact</p>
